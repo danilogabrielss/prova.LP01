@@ -14,8 +14,7 @@ public class Hora {
         setMin();
         setSeg();
         System.out.println(getHora1());
-        System.out.println(getHora2());
-        System.out.println("Total de segundos no dia: " + getSegundos());
+        System.out.println(getHora2());        
     }
 
     public Hora(int hora, int min, int seg) {

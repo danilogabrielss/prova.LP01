@@ -2,7 +2,7 @@ package tp05ex01;
 
 import java.util.Scanner;
 
-class Hora {
+public class Hora {
 
     private int hora;
     private int min;
@@ -11,55 +11,52 @@ class Hora {
 
     public Hora() {
         setHor();
-        setHor(hora);
         setMin();
-        setMin(min);
         setSeg();
-        setSeg(seg);
         System.out.println(getHora1());
         System.out.println(getHora2());
         System.out.println("Total de segundos no dia: " + getSegundos());
     }
 
-    public Hora(int h, int m, int s) {
-        h = 0;
-        m = 0;
-        s = 0;
-    }
-
-    public void setHor(int h) {
-        
-    }
-
-        public void setMin(int m) {
-        
-    }
-
-    public void setSeg(int s) {
-        
-    }
+    public Hora(int hora, int min, int seg) {
+        this.hora = hora;
+        this.min = min;
+        this.seg = seg;
+    }    
     
-    public void setHor(){
-        do{
+    public void setHor(int hora) {
+        this.hora = hora;
+    }
+
+    public void setMin(int min) {
+        this.min = min;
+    }
+
+    public void setSeg(int seg) {
+        this.seg = seg;
+    }
+
+    public void setHor() {
+        do {
             System.out.print("Digite o valor da hora: ");
             this.hora = t.nextInt();
-        }while (hora < 0 || hora >= 24);
-    }
-    
-    public void setMin(){
-        do{
-            System.out.print("Digite o valor dos minutos: ");
-            this.min = t.nextInt();
-        }while (min < 0 || min >= 60);
+        } while (hora < 0 || hora >= 24);
     }
 
-    public void setSeg(){
-        do{
+    public void setMin() {
+        do {
+            System.out.print("Digite o valor dos minutos: ");
+            this.min = t.nextInt();
+        } while (min < 0 || min >= 60);
+    }
+
+    public void setSeg() {
+        do {
             System.out.print("Digite o valor dos segundos: ");
             this.seg = t.nextInt();
-        }while (seg < 0 || seg >= 60);
+        } while (seg < 0 || seg >= 60);
     }
-    
+
     public int getHor() {
         return hora;
     }

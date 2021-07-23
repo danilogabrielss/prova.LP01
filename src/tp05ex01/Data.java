@@ -11,24 +11,13 @@ public class Data {
     private int ano;
 
     public Data() {
-        System.out.println("Digite o valor do dia: ");
-        this.dia = t.nextInt();
-        while (this.dia > 31 || this.dia < 1) {
-            System.out.println("Digite o valor do dia: ");
-            this.dia = t.nextInt();
-        }
-        System.out.println("Digite o valor de mes: ");
-        this.mes = t.nextInt();
-        while (this.mes > 12 || this.mes < 1) {
-            System.out.println("Digite o valor do mes: ");
-            this.ano = t.nextInt();
-        }
-        System.out.println("Digite o valor do ano: ");
-        this.ano = t.nextInt();
-        while (this.ano > 12 || this.ano < 1) {
-            System.out.println("Digite o valor do ano: ");
-            this.ano = t.nextInt();
-        }
+        setDia();
+        setDia(dia);
+        setMes();
+        setMes(mes);
+        setAno();
+        setAno(ano);
+        mostra1();
     }
 
     public Data(int dia, int mes, int ano) {
@@ -37,63 +26,83 @@ public class Data {
         this.ano = ano;
     }
 
-    public void entraDia(int d) {
+    public void setDia(int d) {
         this.dia = d;
     }
 
-    public void entraMes(int d) {
-        this.mes = d;
+    public void setMes(int m) {
+        this.mes = m;
     }
 
-    public void entraAno(int d) {
-        this.ano = d;
+    public void setAno(int a) {
+        this.ano = a;
     }
 
-    public void entraDia() {
-        System.out.println("Digite o valor do dia: ");
+    public void setDia() {
+        System.out.print("Digite o valor do dia: ");
         this.dia = t.nextInt();
         while (this.dia > 31 || this.dia < 1) {
-            System.out.println("Digite o valor do dia: ");
+            System.out.print("Digite o valor do dia: ");
             this.dia = t.nextInt();
         }
-
     }
 
-    public void entraMes() {
-        System.out.println("Digite o valor do mes: ");
-        this.mes = t.nextInt();
-        while (this.mes > 12 || this.mes < 1) {
-            System.out.println("Digite o valor do mes: ");
-            this.ano = t.nextInt();
+    public void setMes() {
+        do {
+            System.out.print("Digite o valor do mes: ");
+            this.mes = t.nextInt();
+        } while (this.mes > 12 || this.mes < 1);
+        while (this.dia > 30 && (this.mes == 2 || this.mes == 4 || this.mes == 6 || this.mes == 9 || this.mes == 11)) {
+            System.out.print("Dia digitado não existe no mês/ano digitados\nDigite o valor do mes: ");
+            this.mes = t.nextInt();
         }
     }
 
-    public void entraAno() {
-        System.out.println("Digite o valor do ano: ");
-        this.ano = t.nextInt();
-        while (this.ano > 12 || this.ano < 1) {
-            System.out.println("Digite o valor do ano: ");
-            this.ano = t.nextInt();
+    public void setAno() {
+        do{
+        System.out.print("Digite o valor do ano: ");
+        this. ano = t.nextInt();
+        }while(this.ano < 0);
+        if(this.dia > 28 && this.mes == 2){
+            System.out.print("Dia inexistente, digite outro dia: ");
+            this.dia = t.nextInt();
         }
     }
 
-    public int retDia() {
+    public int getDia() {
         return (this.dia);
     }
 
-    public int retMes() {
+    public int getMes() {
         return (this.mes);
     }
 
-    public int retAno() {
+    public int getAno() {
         return (this.ano);
     }
 
-    public void mostra1() {
-        System.out.println(this.retDia() + "/" + this.retMes() + "/" + this.retAno());
-    }
-    public void mostra2(){
-        System.out.println("");
+    public String mostra1() {
+        String time;
+        time = (this.dia + "/" + this.mes + "/" + this.ano);
+        return time;
     }
 
+    public boolean bissexto() {
+        if(this.ano % 4 == 0){
+            if(this.ano % 100 == 0){
+                if(this.ano % 400 == 0){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }
+            else{
+                return true;
+            }
+        }
+        else{
+            return false;
+        }
+    }
 }
